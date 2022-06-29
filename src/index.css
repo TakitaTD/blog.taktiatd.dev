@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Alata&family=DM+Sans&family=Poppins:wght@600&family=Roboto:wght@100;300&family=Source+Code+Pro&display=swap");
 *,
 *::after,
 *::before {
   position: relative;
   box-sizing: border-box;
+}
+*::selection {
+  background: rgb(205, 207, 69);
 }
 
 body,
@@ -11,19 +15,56 @@ html {
   padding: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to bottom right, #5e81ac, #1cb480);
+  /* background-image: linear-gradient(45deg, #2e3440, #3b4252, #434c5e, #4c566a); */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom right, #181818, #272727, #181818);
+  background-repeat: no-repeat;
+  z-index: -2;
+}
 #root {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.cursor {
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  z-index: 3;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.1s, top 0.05s, left 0.05s, width 0.1s,
+    height 0.1s;
+}
+#cursor-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }

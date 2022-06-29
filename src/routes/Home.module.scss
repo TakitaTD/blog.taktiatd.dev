@@ -1,0 +1,72 @@
+.Home {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    min-height: 50%;
+    width: 75%;
+    background-color: rgba(0, 0, 0, 0);
+
+    header.Header {
+        font-size: 4rem;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+    }
+
+    div.Description {
+        text-align: center;
+        color: #fff;
+        font-size: 2rem;
+    }
+
+    a.GithubText>span {
+        transition: opacity .3s;
+    }
+
+    a.GithubText::before {
+        content: "Github";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        background-image: linear-gradient(to right, #bf616a, #d08770, #ebcb8b); // It fucking blinks when you take your cursor off.
+        filter: drop-shadow(0 20px 30px #28d8ff33);
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        background-clip: text;
+        box-decoration-break: clone;
+        -webkit-background-clip: text;
+        transition: width .3s;
+    }
+
+    a.GithubText:hover>span {
+        opacity: 0;
+    }
+
+    a.GithubText::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background-image: linear-gradient(to right, #bf616a, #d08770, #ebcb8b); // It fucking blinks when you take your cursor off.
+        background-color: #fff;
+        transition: width .3s;
+    }
+
+    a.GithubText:hover::after {
+        width: 100%;
+    }
+
+    a.GithubText:hover::before {
+        width: 100%;
+        opacity: 1;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        transition: all .3s;
+    }
+}

@@ -11,5 +11,5 @@ render(
       <App />
     </Router>
   ),
-  document.getElementById("root") as HTMLElement
+  document.body as HTMLElement
 );

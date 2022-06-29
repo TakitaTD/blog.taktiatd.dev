@@ -8,15 +8,15 @@ export const routes: RouteDefinition[] = [
     component: Home,
   },
   {
-    path: "/About",
+    path: "/About/",
     component: lazy(() => import("./routes/About")),
   },
   {
     path: "/Posts",
-    component: lazy(() => import("./routes/Posts/Home")),
+    component: lazy(() => import("./routes/Posts")),
   },
   {
-    path: "/Posts/:id",
+    path: "/Post/:id",
     component: lazy(() => import("./routes/Posts/Posts")),
   },
 ];

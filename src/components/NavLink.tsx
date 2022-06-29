@@ -1,21 +1,28 @@
 import { Link, useLocation } from "solid-app-router";
 import type { Component } from "solid-js";
 
-const NavLink: Component = ({ style, children, href, indifferent }) => {
+export type PropsType = {
+  style?: string;
+  href: string;
+  children: any;
+  indifferent: boolean;
+};
+
+const NavLink: Component<PropsType> = (props: PropsType) => {
   return (
-    <li style={style && style}>
+    <li style={props.style && props.style}>
       <Link
-        href={href}
+        href={props.href}
         class={
           // Yeah this code is fuckin stupid
-          !indifferent
-            ? useLocation().pathname === href
+          !props.indifferent
+            ? useLocation().pathname === props.href
               ? "active"
               : "inactive"
             : ""
         }
       >
-        {children}
+        {props.children}
       </Link>
     </li>
   );

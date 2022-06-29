@@ -1,14 +1,4 @@
-a.inactive {}
-
-a {
-
-    color: #fff;
-    font-size: 1.25rem;
-    padding: .3rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
-    transition: all .3s;
-}
+// module.scss fucks with classes.
 
 a.active {
     text-decoration: none;

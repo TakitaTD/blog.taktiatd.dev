@@ -1,17 +1,33 @@
-import { Link, useParams } from "solid-app-router";
-import type { Component } from "solid-js";
+import { Link, useParams, useRoutes } from "solid-app-router";
+import { Component, createEffect, createMemo, createSignal } from "solid-js";
 import { AlphabeticID as genID } from "./genID.js";
+import Post from "./Post";
+import { PostType } from "../Posts";
+import styles from "./Post.module.scss";
+import Loading from "../../components/Loading.jsx";
 
 const Posts: Component = () => {
-  const { id } = useParams();
+  const [postData, setPostData] = createSignal({} as PostType);
+  const post = createMemo(async () => {
+    let fetchedPost;
+    fetch(`https://api.blog.takitatd.dev/api/post/${useParams().id}`)
+      .then((data) => data.json())
+      .then((data) => setPostData(data as PostType));
+  });
+  createEffect(() => {
+    console.log(postData());
+  });
+
   return (
-    <Link
-      href={`/Posts/${genID.encode(
-        Math.floor(Math.random() * 100000000000000)
-      )}`}
-    >
-      Post ID: {useParams().id}
-    </Link>
+    <>
+      {postData().id ? (
+        <Post PostData={postData()} />
+      ) : (
+        <div class={styles.Post}>
+          <Loading />
+        </div>
+      )}
+    </>
   );
 };
 
